@@ -1,9 +1,9 @@
 import React from 'react'
 
-const [slug] = () => {
+const index = () => {
   return (
-    <div>[slug]</div>
+    <div>index</div>
   )
 }
 
-export default [slug]
+export default index
