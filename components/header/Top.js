@@ -22,12 +22,12 @@ export default function Top({country}) {
                         <MdSecurity/>
                         <span>Buyer Protection</span>
                     </li>
-                    <li className={styles.li}>
+                    {/* <li className={styles.li}>
                         <span>Customer Service</span>
                     </li>
                     <li className={styles.li}>
                         <span>Help</span>
-                    </li>
+                    </li> */}
                     <li className={styles.li}>
                         <BsSuitHeart/>
                         <Link href='/profile/wishlist'>
