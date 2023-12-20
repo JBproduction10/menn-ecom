@@ -7,7 +7,8 @@ import Link from "next/link";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { useState } from "react";
-// import CircledIconBtn from "../components/buttons/circledIconBtn";
+import LoginInput from "../components/inputs/loginInput"
+import CircledIconBtn from "../components/buttons/circledIconBtn"
 import {
   getCsrfToken,
   getProviders,
@@ -141,10 +142,52 @@ export default function signin({providers, callbackUrl, csrfToken}){
             <p>
               Get access to one of the best E-Shopping services in the world.
             </p>
-
+            <Formik
+              enableReinitialize
+              initialValues={{
+                login_email,
+                login_password,
+              }}
+              validationSchema={loginValidation}
+              onSubmit={() =>{
+                signInHandler();
+              }}
+            >
+              {(form) => (
+                <Form method='post' action='/api/auth/signin/email'>
+                  <input
+                    type='hidden'
+                    name='csrfToken'
+                    defaultValue={csrfToken}
+                  />
+                  <LoginInput
+                    type="text"
+                    name="login_email"
+                    icon="email"
+                    placeholder='Email Address'
+                    onChange={handleChange}
+                  />
+                  <LoginInput
+                    type='password'
+                    name="login_password"
+                    icon='password'
+                    placeholder='Password'
+                    onChange={handleChange}
+                  />
+                  <CircledIconBtn type='submit' text='Sign in'/>
+                  {login_error && (
+                    <span className={styles.error}>{login_error}</span>
+                  )}
+                  <div className={styles.forgot}>
+                    <Link href='/auth/forgot'>Forgot password?</Link>
+                  </div>
+                </Form>
+              )}
+            </Formik>
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   )
 }
