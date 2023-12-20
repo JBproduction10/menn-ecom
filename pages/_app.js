@@ -20,11 +20,13 @@ export default function App({ Component, pageProps:{session, ...pageProps} }) {
             <meta name="description"
                 content="Welcome to the home of Awesomeness in Wood."
             />
-            <link rel='icon' href="/favicon.ico"/>
+            <link rel='icon' href="/HK_Logo.png"/>
+            <link ref="shortcut icon" href="/HK_Logo.png"/>
             <link rel="shortcut icon"
-                href=""
+                href="https://houtkappers.vercel.app/"
             />
-            <link rel="apple-touch-icon" href="" />
+            <link rel="apple-touch-icon" href="HK_Logo.png" />
+            <link rel="apple-touch-icon" href="https://houtkappers.vercel.app/" />
         </Head>
                     
         <SessionProvider session={session}>
