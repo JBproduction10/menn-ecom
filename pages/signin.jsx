@@ -184,10 +184,112 @@ export default function signin({providers, callbackUrl, csrfToken}){
                 </Form>
               )}
             </Formik>
+            <div className={styles.login__socials}>
+              <span className={styles.or}>Or continue with</span>
+              <div className={styles.login__socials_wrap}>
+                {providers.map((provider) => {
+                  if(provider.name == "Credentials"){
+                    return;
+                  }
+                  return(
+                    <div key={provider.name}>
+                      <button
+                        className={styles.social__btn}
+                        onClick={() => signIn(provider.id)}
+                      >
+                        <img src={`../../icons/${provider.name}.png`} alt=''/>
+                        Sign in with {provider.name}
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
+        <div className={styles.login__container}>
+          <div className={styles.login__form}>
+            <h1>Sign up</h1>
+            <p>Get access to one of the best E-Shopping services in the world.</p>
+          </div>
+          <Formik
+            enableReinitialize
+            initialValues={{
+              name,
+              email,
+              password,
+              conf_password,
+            }}
+            validationSchema={registerValidation}
+            onSubmit={() => {
+              signUpHandler();
+            }}
+          >
+            {(form) =>(
+              <Form>
+                <LoginInput
+                  type='text'
+                  name='name'
+                  icon='user'
+                  placeholder="Full Name"
+                  onChange={handleChange}
+                />
+                <LoginInput
+                  type='text'
+                  name='email'
+                  icon='email'
+                  placeholder="Email address"
+                  onChange={handleChange}
+                />
+                <LoginInput
+                  type='password'
+                  name='password'
+                  icon='password'
+                  placeholder="Password"
+                  onChange={handleChange}
+                />
+                <LoginInput
+                  type='password'
+                  name='conf_password'
+                  icon='password'
+                  placeholder='Confirm Password'
+                  onChange={handleChange}
+                />
+                <CircledIconBtn type='submit' text='Sign up'/>
+              </Form>
+            )}
+          </Formik>
+          <div>
+            {success && <span className={styles.success}>{success}</span>}
+          </div>
+          <div>{error && <span className={styles.error}>{error}</span>}</div>
+        </div>
       </div>
-      <Footer/>
+      <Footer country='South Africa'/>
     </>
   )
+};
+
+export async function getServerSideProps(context){
+  const {req, query} = context;
+
+  const session = await getSession({req});
+  const {callbackUrl} = query;
+
+  if(session){
+    return{
+      redirect:{
+        destination: callbackUrl,
+      },
+    };
+  }
+  const csrfToken = await getCsrfToken(context);
+  const providers = Object.values(await getProviders());
+  return{
+    props:{
+      providers,
+      csrfToken,
+      callbackUrl,
+    },
+  };
 }
