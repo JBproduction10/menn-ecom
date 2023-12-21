@@ -53,7 +53,7 @@ export default function Top({country}) {
                                 <RiArrowDropDownFill/>
                             </div>
                         )}
-                        {visible && <UserMenu/>}
+                        {visible && <UserMenu session={session}/>}
                     </li>
                 </ul>
             </div>
