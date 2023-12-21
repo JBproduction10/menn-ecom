@@ -1,13 +1,16 @@
 import NextAuth from "next-auth";
-import Auth0Provider from 'next-auth/providers/auth0';
-import GithubProvider from "next-auth/providers/github";
-import GoogleProvider from "next-auth/providers/google";
+import TwitterProvider from "next-auth/providers/twitter";
 import FacebookProvider from "next-auth/providers/facebook";
+import GoogleProvider from "next-auth/providers/google";
+import GitHubProvider from "next-auth/providers/github";
+import Auth0Provider from "next-auth/providers/auth0";
 import CredentialsProvider from "next-auth/providers/credentials";
-import {MongoDBAdapter} from '@next-auth/mongodb-adapter';
-import clientPromise from "./lib/mongodb";
 import User from "../../../models/User";
+import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
+import clientPromise from "./lib/mongodb";
 import bcrypt from "bcrypt";
+import db from "../../../utils/db";
+db.connectDb();
 
 export default NextAuth({
   adapter: MongoDBAdapter(clientPromise),
@@ -29,7 +32,7 @@ export default NextAuth({
         const password = credentials.password;
         const user = await User.findOne({email});
         if(user){
-          return StaticGenerationSearchParamsBailoutProvider({password, user});
+          return SignInUser({password, user});
         }else{
           throw new Error("This email does not exist.");
         }

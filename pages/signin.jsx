@@ -197,7 +197,7 @@ export default function signin({providers, callbackUrl, csrfToken}){
                         className={styles.social__btn}
                         onClick={() => signIn(provider.id)}
                       >
-                        <img src={`../../icons/${provider.name}.png`} alt=''/>
+                        <img src={`../../icons/${provider.name}.png`} alt="" />
                         Sign in with {provider.name}
                       </button>
                     </div>
@@ -270,23 +270,23 @@ export default function signin({providers, callbackUrl, csrfToken}){
   )
 };
 
-export async function getServerSideProps(context){
-  const {req, query} = context;
+export async function getServerSideProps(context) {
+  const { req, query } = context;
 
-  const session = await getSession({req});
-  const {callbackUrl} = query;
+  const session = await getSession({ req });
+  const { callbackUrl } = query;
 
-  if(session){
-    return{
-      redirect:{
+  if (session) {
+    return {
+      redirect: {
         destination: callbackUrl,
       },
     };
   }
   const csrfToken = await getCsrfToken(context);
   const providers = Object.values(await getProviders());
-  return{
-    props:{
+  return {
+    props: {
       providers,
       csrfToken,
       callbackUrl,
