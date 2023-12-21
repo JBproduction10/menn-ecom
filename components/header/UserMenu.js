@@ -8,18 +8,17 @@ export default function UserMenu({session}) {
       <h4>Welcome to Houtkappers!</h4>
       {session ? (
         <div className={styles.flex}>
-          <img src={session?.user?.image} alt="" className={styles.menu__img} />
+          <img src={session?.user?.image} alt="" className={styles.menu__img}/>
           <div className={styles.col}>
             <span> Welcome Back,</span>
             <h3>{session?.user?.name}</h3>
             <span onClick={() => signOut()}>Sign out</span>
           </div>
         </div>
-      ) : null /* If session exists, show user details; otherwise, show nothing */}
 
-      {!session && ( // Render only if there's no session (user is not logged in)
+      ) : (
         <div className={styles.flex}>
-          <button className={styles.btn_primary}>Register</button>
+          <button className={styles.btn_primary} onClick={() => signIn()}>Register</button>
           <button className={styles.btn_outlined} onClick={() => signIn()}>
             Login
           </button>
@@ -40,7 +39,7 @@ export default function UserMenu({session}) {
           <Link href="/profile/address">Address</Link>
         </li>
         <li>
-          <Link href="/profile/whishlist">Wishlist</Link>
+          <Link href="/profile/whishlist">Whishlist</Link>
         </li>
       </ul>
     </div>

@@ -134,7 +134,7 @@ export default function signin({providers, callbackUrl, csrfToken}){
               <BiLeftArrowAlt/>
             </div>
             <span>
-              We'd be happy to have you join us! <Link href='/'>Go Store</Link>
+              We'd be happy to have you onboard with us! <Link href='/'>Go Store</Link>
             </span>
           </div>
           <div className={styles.login__form}>
