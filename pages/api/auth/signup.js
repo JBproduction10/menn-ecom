@@ -6,7 +6,7 @@ import db from "../../../utils/db";
 import User from "../../../models/User";
 import {createActivationToken} from "../../../utils/tokens";
 import {sendEmail} from "../../../utils/sendEmails";
-import {activateEmailTemplate} from "../../../emails/activeEmailTemplate";
+import {activateEmailTemplate } from "../../../emails/activeEmailTemplate";
 
 const handler = nc();
 

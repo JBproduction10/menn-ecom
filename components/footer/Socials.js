@@ -14,21 +14,21 @@ export default function Socials() {
         <h3>STAY CONNECTED</h3>
         <ul>
           <li>
-            <a href="/" target="_blank">
+            <a href="https://www.facebook.com/houtkappers" target="_blank">
               <FaFacebookF />
             </a>
           </li>
           <li>
-            <a href="/" target="_blank">
+            <a href="https://instagram.com/houtkappers" target="_blank">
               <BsInstagram />
             </a>
           </li>
-          {/* <li>
-            <a href="/" target="_blank">
+          <li>
+            <a href="https://twitter.com/houtkappers" target="_blank">
               <BsTwitter />
             </a>
-          </li> */}
-          {/* <li>
+          </li>
+           {/*<li>
             <a href="/" target="_blank">
               <BsYoutube />
             </a>
@@ -44,7 +44,7 @@ export default function Socials() {
             </a>
           </li> */}
           <li>
-            <a href="/" target="_blank">
+            <a href="https://tiktok.com/houtkappers" target="_blank">
               <FaTiktok />
             </a>
           </li>
