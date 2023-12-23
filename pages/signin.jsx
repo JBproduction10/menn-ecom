@@ -80,15 +80,15 @@ export default function signin({providers, callbackUrl, csrfToken}){
       .oneOf([Yup.ref("password")], "Passwords must match."),
   });
   
-  const signUpHandler = async() =>{
-    try{
+  const signUpHandler = async () => {
+    try {
       setLoading(true);
-      const {data} = await axios.post("/api/auth/signup", {
+      const { data } = await axios.post("/api/auth/signup", {
         name,
         email,
         password,
       });
-      setUser({ ...user, error: "", success: data.message});
+      setUser({ ...user, error: "", success: data.message });
       setLoading(false);
       setTimeout(async () => {
         let options = {
@@ -99,9 +99,9 @@ export default function signin({providers, callbackUrl, csrfToken}){
         const res = await signIn("credentials", options);
         Router.push("/");
       }, 2000);
-    }catch(error){
+    } catch (error) {
       setLoading(false);
-      setUser({ ...user, success: '', error: error.response.data.message})
+      setUser({ ...user, success: "", error: error.response.data.message });
     }
   };
 
