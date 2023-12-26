@@ -8,8 +8,8 @@ export default function Copyright({country}){
             <section>@2023 HOUTKAPPERS. All Rights Reserved.</section>
             <section>
                 <ul>
-                    {data.map((link) => (
-                        <li>
+                    {data.map((link, index) => (
+                        <li key={index}>
                             <Link href="/">{link.name}</Link>
                         </li>
                     ))}
