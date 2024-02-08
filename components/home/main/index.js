@@ -29,7 +29,7 @@ export default function Main(){
             <Header/>
             <Menu/>
             <MainSwiper/>
-            {/* <Offers/> */}
+            <Offers/>
             {/* <User/> */}
         </div>
     )
