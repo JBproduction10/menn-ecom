@@ -15,5 +15,47 @@
 // import FlashCard from "./Card";
 
 // export default function flashDeals(){
-    
+//     return(
+//         <div className={styles.flashDeals}>
+//             <div className={styles.flashDeals__header}>
+//                 <h1>
+//                     FLASH SALE
+//                     <MdFlashOn/>
+//                 </h1>
+//                 <Countdown date={new Date(2024, 2, 18)}/>
+//             </div>
+//             <Swiper
+//                 slidesPerView={1}
+//                 spaceBetween={10}
+//                 navigation={true}
+//                 modules={[Navigation]}
+//                 className="flashDeals__swiper"
+//                 breakpoints={{
+//                     450:{
+//                         slidesPerView: 2,
+//                     },
+//                     630:{
+//                         slidesPerView: 3,
+//                     },
+//                     920:{
+//                         slidesPerView: 4,
+//                     },
+//                     1232:{
+//                         slidesPerView: 5,
+//                     },
+//                     1520:{
+//                         slidesPerView: 6,
+//                     }
+//                 }}
+//             >
+//                 <div className={styles.flashDeals__list}>
+//                     {flashDealsArray.map((product, i) => (
+//                         <SwiperSlide>
+//                             <FlashCard product={product} key={i}/>
+//                         </SwiperSlide>
+//                     ))}
+//                 </div>
+//             </Swiper>
+//         </div>
+//     )
 // }

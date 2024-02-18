@@ -33,7 +33,7 @@ export default function home({country, products}){
                 <div className={styles.container}>
                     <Main/>
                     {/* <FlashDeals/> */}
-                    <div className={styles.home__category}>
+                    {/* <div className={styles.home__category}>
                         <Category
                             header='Dresses'
                             products={women_dresses}
@@ -58,7 +58,7 @@ export default function home({country, products}){
                             products={women_accessories}
                             background='#000'
                         />
-                    </div>
+                    </div> */}
                     <ProductsSwiper products={women_swiper}/>
                     <div className={styles.products}>
                         {products.map((product) => (
