@@ -26,10 +26,10 @@ export default function Main(){
     const {data: session} = useSession();
     return (
         <div className={styles.main}>
-            <Header/>
+            {/* <Header/> */}
             <Menu/>
             <MainSwiper/>
-            <Offers/>
+            {/* <Offers/> */}
             {/* <User/> */}
         </div>
     )
